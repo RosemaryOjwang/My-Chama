@@ -4,6 +4,17 @@ import math
 import datetime
 
 # Create your models here.
+class UserRegister(models.Model):
+    username = models.CharField(max_length=25)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=6)
+    confirm_password = models.CharField(max_length=10)
+
+def __str__(self):
+    return self.email
+
+class Meta:
+    db_table = "UserRegister"
 #class UserLogin(models.Model):
 class AccountOpening(models.Model):
     ACCOUNT_TYPES = (
