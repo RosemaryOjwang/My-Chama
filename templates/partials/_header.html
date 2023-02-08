@@ -1,0 +1,11 @@
+{% load static %}
+<header>
+  <img class="logo" src="{% static 'img/logo.png' %}" />
+</header>
+<nav>
+  <ul class="header_links">
+    <li><a href="{% url 'signup' %}">SignUp</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
+  </ul>
+</nav>
+

@@ -1,0 +1,43 @@
+button{
+    font-weight:bold;
+    background:#00abff;
+    color:#fff;
+    padding:10px 20px;
+    font-size:14px;
+    text-transform:uppercase; 
+    border-radius: 15px;
+
+}
+.logo{
+border-radius: 50%;
+width: 30px;
+height: auto;
+}
+.logo_footer{
+    width: 30px;
+    height: auto;
+    float: right;
+}
+.footer_wording{
+    float: right;
+}
+main{
+    margin-left: 35%;
+}
+a, li{
+    display:inline;
+    text-decoration: none;
+    justify-content: space-between;
+    font-size: 1.3rem;
+
+}
+nav{
+    background-color: #00abff;
+    height: 35px;
+}
+.header_links{
+    margin-left: 45%;
+    
+}
+
+
