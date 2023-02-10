@@ -40,4 +40,27 @@ nav{
     
 }
 
+p span  {
+    background: #fff;
+    padding: 0 10px;
+}
+
+p   {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em
+}
+#sign-up    {
+    border: none;
+}
+#submit, #create-acct-btn   {
+    background-color: #AB1449;
+    color: white;
+    border: none;
+    margin-top: 5%;
+}
+
 
