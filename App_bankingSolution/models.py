@@ -2,6 +2,7 @@ from django.db import models
 from random import random
 import math
 import datetime
+from django.utils import timezone
 
 # Create your models here.
 class UserRegister(models.Model):
@@ -46,13 +47,14 @@ class AccountOpening(models.Model):
     identity_number = models.CharField(max_length=10, unique=True, default=123456789)
     account_type = models.CharField(max_length=5, choices=ACCOUNT_TYPES)
     residency = models.CharField(max_length=3, choices=RESIDENCY_CHOICES)
-    first_name = models.CharField(max_length=50, blank=True)
-    second_name = models.CharField(max_length=50, blank=True)
-    last_name = models.CharField(max_length=50, blank=True)
-    company_business_name = models.CharField(max_length=155, blank=True)
+    first_name = models.CharField(max_length=50, blank=True, null=True)
+    second_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
+    company_business_name = models.CharField(max_length=155, blank=True, null=True)
     date_of_birth = models.CharField(max_length=5, choices=DOB_CHOICES)
     birth_date = models.DateField(default=datetime.date.today)
     account_number = models.IntegerField(default=00)
+    opening_date = models.DateTimeField(default=timezone.now)
     
 def __str__(self):
     account_number = math.floor(random(0.1,0.9))*1000
@@ -60,6 +62,12 @@ def __str__(self):
 
 class Meta:
     db_table = 'AccountOpening'
+
+class Meta:
+    ordering = ['-opening_date']
+    indexes = [
+        models.Index(fields=['-opening_date']),
+    ]
 
 
 #class TransactionMaintenance(models.Model)
