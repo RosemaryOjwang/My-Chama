@@ -22,18 +22,18 @@ height: auto;
     float: right;
 }
 main{
-    margin-left: 35%;
+    margin-left: 15%;
 }
 a, li{
     display:inline;
     text-decoration: none;
     justify-content: space-between;
-    font-size: 1.3rem;
+    /*font-size: 1.3rem;*/
 
 }
-nav{
+nav, footer{
     background-color: #00abff;
-    height: 35px;
+    height: 45px;
 }
 .header_links{
     margin-left: 45%;
@@ -44,23 +44,30 @@ p span  {
     background: #fff;
     padding: 0 10px;
 }
+.return-btn{
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    border: none;
+}
 
-p   {
+.line   {
     margin-top: 5%;
     margin-bottom: 5%;
-    width: 100%;
+    width: 22%;
     text-align: center;
     border-bottom: 1px solid #000;
     line-height: 0.1em
-}
-#sign-up    {
+} #signup, .login  {
     border: none;
 }
-#submit, #create-acct-btn   {
+a{
+    color: #ffffff;
+}
+/*#submit, #create-acct-btn   {
     background-color: #AB1449;
     color: white;
     border: none;
     margin-top: 5%;
-}
+}*/
 
 
