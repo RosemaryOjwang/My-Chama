@@ -31,6 +31,9 @@ a, li{
     /*font-size: 1.3rem;*/
 
 }
+.login-home{
+    color: blue;
+}
 nav, footer{
     background-color: #00abff;
     height: 45px;
