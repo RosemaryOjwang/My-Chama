@@ -75,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bankingSolution.wsgi.application'
 
-LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL='/'
 
 
