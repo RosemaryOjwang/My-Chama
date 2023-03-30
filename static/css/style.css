@@ -31,6 +31,10 @@ a, li{
     /*font-size: 1.3rem;*/
 
 }
+.app-title{
+    text-align: center;
+    font-style:italic;
+}
 .login-home{
     color: blue;
 }
