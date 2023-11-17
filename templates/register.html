@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Group Registration{% endblock %}
+
+{% block content %}
+    
+    <form method="post" actions="." enctype="multipart/form-data">
+        <h3>Group Registration</h3>
+        {% csrf_token %}
+
+        {{ h_form.as_p }}
+        {{ i_form.as_p }}
+
+        <button class="registergroup">Submit</button>
+    </form>
+
+    {% endblock %}
