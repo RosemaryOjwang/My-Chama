@@ -3,11 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-    Hi {{ user.username }}!
-    <p><a href="{% url 'logout' %}"><span class="login-home">Log Out</span></a></p>
-{% else %}
-    <p>You are not logged in.</p>
-    <a  href="{% url 'login' %}"><span class="login-home">Log In</span></a>
-{% endif %}
+<p>Welcome to My Chama!</p>
+<p>Are you in a group or would like to form one so as to pool resources?</p>
+<p>At My Chama, we will help you manage your group.</p>
 {% endblock %}

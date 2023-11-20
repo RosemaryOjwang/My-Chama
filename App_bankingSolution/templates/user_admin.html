@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+    <h3>{{title}}</h3>
+    
+    {% if user.is_authenticated %}
+        
+        <p>Welcome {{ user.username }} <button class="logout"><a href="{% url "logout" %}">Log Out</a></button></p>
+        <p>Kindly click <a class="register_group" href="{% url "register_group" %}">here</a> to register your group in My Chama website.</p>
+        
+        
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url "login" %}"><span class="login-home">Log In</span></a>
+    {% endif %}
+
+    
+    
+    <h2>Group Members</h2>
+    
+    
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message-container">
+                <h4 class="message">{{ message }}</h4>
+            </div>
+        {% endfor %}
+    {% endif %}
+               
+    {% if member in members %}
+        <div>
+                    
+            <a href="{% url 'edit_member' member.id %}">
+                <img src="{% if member.thumbnail %}{{ member.thumbnail.url }}
+                {% else %}{% static "img/no_image.png" %}
+                {% endif %}">
+                        
+            </a>
+            <br>
+            <a href="{{ member.get_absolute_url }}">{{ member.memberName }}</a>
+            <br>
+                    
+        </div>
+    
+    {% else %}
+        <p>You've not added any members...</p>
+    {% endif %}
+
+{% endblock %}

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from App_bankingSolution.forms import Group_Form 
+from App_bankingSolution.forms import Group_Form, Add_MembersForm
 from django.utils.text import slugify
 from django.contrib import messages
 
@@ -19,7 +19,6 @@ def register_group(request):
     group_form = Group_Form()
     
     if request.method == "POST":
-        files = request.FILES.getlist('images')
         group_form = Group_Form(request.POST, request.FILES)
 
         if group_form.is_valid():
@@ -31,57 +30,53 @@ def register_group(request):
             group.slug = slug
             group.save()
 
-            #for file in files:
-                #MultipleImage.objects.create(house=house, images=file)
-
             messages.success(request, 'Your group was created successfuly!')
 
-            #return redirect('payments:process')
-
-            return redirect('user_admin')
+            return redirect('add_member')
     else:
         group_form = Group_Form()
-        #images_form = MultipleImagesForm()
 
 
 
-    context = {"h_form": house_form, "i_form": images_form, "title": "Add House"}
-    return render(request, 'Agency/add_house.html', context )
+    context = {"g_form": group_form, "title": "Create Group"}
+    return render(request, 'register_group.html', context )
 
 
 @login_required
 def add_member(request):
-    house_form = House_DetailsForm()
-    images_form = MultipleImagesForm()
+    membership_form = Add_MembersForm()
+    
     if request.method == "POST":
-        files = request.FILES.getlist('images')
-        house_form = House_DetailsForm(request.POST, request.FILES)
+        
+        membership_form = Add_MembersForm(request.POST, request.FILES)
 
-        if house_form.is_valid():
-            title = request.POST.get('title')
-            slug = slugify(title)
+        if membership_form.is_valid():
+            memberName = request.POST.get('memberName')
+            slug = slugify(memberName)
 
-            house = house_form.save(commit=False)
-            house.user = request.user
-            house.slug = slug
-            house.save()
+            member = membership_form.save(commit=False)
+            member.user = request.user
+            member.slug = slug
+            member.save()
 
-            for file in files:
-                MultipleImage.objects.create(house=house, images=file)
-
-            messages.success(request, 'The house was added successfuly!')
-
-            #return redirect('payments:process')
+            
+            messages.success(request, 'The member was added successfuly!')
 
             return redirect('user_admin')
     else:
-        house_form = House_DetailsForm()
-        images_form = MultipleImagesForm()
+        membership_form = Add_MembersForm()
 
 
 
-    context = {"h_form": house_form, "i_form": images_form, "title": "Add House"}
-    return render(request, 'Agency/add_house.html', context )
+    context = {"m_form": membership_form, "title": "Add Member"}
+    return render(request, 'add_member.html', context )
+
+@login_required
+def user_admin(request):
+    members = request.user.group_user.exclude(available=False)
+    context = {"title": "User Admin Site"}
+    return render(request, 'user_admin.html', context)
+
 
 
     

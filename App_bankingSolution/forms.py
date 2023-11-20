@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import UserRegister
-from .models import Group
+from .models import UserRegister
+from accounts.models import Group, Add_Members
 
 #Create form
 
@@ -25,9 +25,13 @@ class Group_Form(forms.ModelForm):
         model =Group
         fields = ('groupName',)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['groupName'].widget.attrs.update({'class': 'groupName'})
+    
+class Add_MembersForm(forms.ModelForm):
+    class Meta:
+        model = Add_Members
+        fields = ('groupName','thumbnail', 'memberName', 'member_contact', 'occupation', 'available',)
+
+    
 
 
 

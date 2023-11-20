@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    
+    <form method="post" actions="." enctype="multipart/form-data">
+        <h3>{{ title }}</h3>
+        {% csrf_token %}
+
+        {{ m_form.as_p }}
+    
+
+        <button>Submit</button>
+    </form>
+
+    {% endblock %}

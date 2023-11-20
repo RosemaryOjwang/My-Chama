@@ -70,11 +70,8 @@ p span  {
 a{
     color: #ffffff;
 }
-/*#submit, #create-acct-btn   {
-    background-color: #AB1449;
-    color: white;
-    border: none;
-    margin-top: 5%;
-}*/
+.register_group {
+    color: #0000ff;
+}
 
 
